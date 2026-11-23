@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -22,5 +23,10 @@ public class ProyectoMongoAdaptador implements ProyectoRepositorioPuerto {
     @Override
     public List<Proyecto> buscarPorPropietarioOMiembro(String propietarioId, String miembroId) {
         return repositorioMongo.findByPropietarioIdOrIdsMiembros(propietarioId, miembroId);
+    }
+
+    @Override
+    public Optional<Proyecto> buscarPorId(String idProyecto) {
+        return repositorioMongo.findById(idProyecto);
     }
 }
